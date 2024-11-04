@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <header><title>MerchantVault</title></header>
+
+    <body>
+        <h1>Welcome to MerchantVault, {{ user.username }}!</h1>
+        <p>Today is {{ today }}</p>
+        <h3>Available Balance: {{ user.merchant.balance }}</h3>
+        <a href="{% url 'account.detail' %}" class="btn btn-primary">View Account Details</a>
+        <a href="{% url 'transaction.new' %}" class="btn btn-primary">Make A Transfer</a>
+        <a href="{% url 'transaction.history' %}" class="btn btn-primary">View Transaction History</a>
+        
+    </body>
+{% endblock %}
+

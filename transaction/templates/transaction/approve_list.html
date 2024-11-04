@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center">Approve Transactions</h1>
+
+{% if transactions %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.id }}</td>
+                    <td>{{ transaction.sender.user.username }}</td>
+                    <td>{{ transaction.receiver.user.username }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.status }}</td>
+                    <td>
+                        {% if transaction.status == 'pending' %}
+                            <a href="{% url 'transaction.approve' transaction.id %}" class="btn btn-primary">Approve/Reject</a>
+                            {% comment %} <a href="{% url 'transaction.reject' transaction.id %}" class="btn btn-danger">Reject</a> {% endcomment %}
+                        {% else %}
+                            <span>{{ transaction.status }}</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No transactions found.</p>
+{% endif %}
+
+<a href="{% url 'bankstaff.home' %}" class="btn btn-secondary my-5">Back to Home</a>
+{% endblock %}
