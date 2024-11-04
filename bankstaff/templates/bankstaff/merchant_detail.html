@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="border round">
+    <h1 class="my-5">{{merchant.first_name}} {{merchant.last_name}}</h1>
+    <p>Username: {{merchant.user}}</p>
+    <p>Email: {{merchant.email}}</p>
+    <p>Phone: {{merchant.phone}}</p>
+    <p>Address: {{merchant.home_address}}</p>
+    <a href="{% url 'merchant.list' %}" class="btn btn-primary mt-3">Back to List</a>
+    <a href="{% url 'merchant.update' pk=merchant.user.pk %}" class="btn btn-secondary mt-3">Edit</a>
+    <a href="{% url 'merchant.delete' pk=merchant.user.pk %}" class="btn btn-danger mt-3">Delete</a>
+</div>
+{% endblock %}

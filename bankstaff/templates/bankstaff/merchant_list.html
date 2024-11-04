@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="my-5">Merchant List</h1>
+    <div class="row row-cols3 g-2"> 
+        {% for merchant in merchants %}
+        <div class="col">
+            <div class="p-3 border">
+                <h3>
+                    <a href="{% url 'merchant.detail' merchant.user.pk %}">{{ merchant.user }}</a>              
+                </h3>            
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

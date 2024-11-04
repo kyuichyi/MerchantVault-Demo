@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+  
+  <label for="otp">Enter OTP:</label>
+  <input type="text" name="otp" id="otp" required>
+  <button type="submit">Verify</button>
+
+  {% if error %}
+  <div class="alert alert-danger my-5">
+    <p>{{ error }}</p>
+  </div>
+  {% endif %}
+</form>
+{% endblock %}

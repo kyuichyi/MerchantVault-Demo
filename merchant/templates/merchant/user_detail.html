@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="border round">
+    <h1 class="my-5">{{user.merchant.first_name}} {{user.merchant.last_name}}</h1>
+    <p>Username: {{user.merchant.user}}</p>
+    <p>Email: {{user.merchant.email}}</p>
+    <p>Phone: {{user.merchant.phone}}</p>
+    <p>Address: {{user.merchant.home_address}}</p>
+    <a href="{% url 'merchant.home' %}" class="btn btn-primary mt-3">Back to Home</a>
+    <a href="{% url 'account.update' %}" class="btn btn-secondary mt-3">Edit Account Details</a>
+    <a href="{% url 'account.change_username' %}" class="btn btn-secondary mt-3">Change Username</a>
+    <a href="{% url 'account.change_password' %}" class="btn btn-danger mt-3">Change Password</a>
+    {% comment %} <a href="{% url 'account.delete' %}" class="btn btn-danger mt-3">Delete</a> {% endcomment %}
+</div>
+{% endblock %}

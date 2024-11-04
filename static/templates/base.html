@@ -1,0 +1,38 @@
+{% load static %}
+<html>
+    <head>
+        <title>MerchantVault</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    </head>
+
+    <body>
+      <nav class='navbar navbar-dark bg-dark'> 
+        <div class='ms-auto'>
+
+          {% if user.is_authenticated %}
+            {% if user.is_merchant %}
+              <a href="{% url 'merchant.home'%}" class="btn btn-outline-light me-1">Home</a>
+            {% elif user.is_bankstaff %}
+              <a href="{% url 'bankstaff.home'%}" class="btn btn-outline-light me-1">Home</a>
+              <a href="{% url 'merchant.list'%}" class="btn btn-outline-light me-1">Manage</a>
+          {% endif %}
+          <form id="logout-form" method="post" class="d-inline" action="{% url 'logout' %}"> {% csrf_token %}
+          <button class="btn btn-outline-light me-1" type="submit">Logout</button>
+          </form>
+
+          {% else %}
+          <a href="{% url 'login'%}" class="btn btn-outline-light me-1">Login</a>
+          <a href="{% url 'signup'%}" class="btn btn-outline-light me-1">Sign Up</a>
+          {% endif %}
+
+        </div>
+
+      </nav>
+
+      <div class="my-5 text-center container"> 
+        {% block content %}
+        {% endblock %}
+      </div>
+    </body>
+</html>

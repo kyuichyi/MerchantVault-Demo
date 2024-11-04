@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <header><title>MerchantVault</title></header>
+
+    <body>
+        <h1>Welcome to MerchantVault, {{ user.username }}!</h1>
+        <p>Today is {{today}}</p>
+        <a href="{% url 'merchant.list' %}" class="btn btn-primary">Manage Merchants</a>
+        <a href="{% url 'approve.list' %}" class="btn btn-primary">View Transfer Requests</a>
+        <a href="{% url 'approve.history' %}" class="btn btn-primary">View Past Approvals/Rejects</a>
+        <a href="{% url 'accesslog_list' %}" class="btn btn-primary">View Access Logs</a>
+        <a href="{% url 'anonymize_data' %}" class="btn btn-primary">Anonymize Data</a>
+    </body>
+{% endblock %}
