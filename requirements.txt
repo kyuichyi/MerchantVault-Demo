@@ -7,8 +7,8 @@ django-environ
 django-otp
 pandas
 matplotlib
-openpyxl
-waitress
+# openpyxl
+# waitress
 phonenumbers
 django-two-factor-auth
 faker

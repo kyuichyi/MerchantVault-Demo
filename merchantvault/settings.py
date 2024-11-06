@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #added
-    'mod_wsgi.server',
+    # 'mod_wsgi.server', #added for mod_wsgi
     'phonenumber_field', #pip install django-phonenumber-field[phonenumbers]
     'psycopg2',
 
